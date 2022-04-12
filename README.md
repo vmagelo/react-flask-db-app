@@ -1,7 +1,11 @@
 ## Flask, React, Postgres - Test App
 
-This is how to construct this project from scratch. If you are cloning this, everything is here that you need. The idea is that this app should function with restaurant reviews, like [Deploy a Python (Django or Flask) web app with PostgreSQL in Azure](https://docs.microsoft.com/azure/app-service/tutorial-python-postgresql-app), but instead of rendering templates in Django or Flask, use [React](https://reactjs.org/) as frontend. This means built in templating engines are not used and Python is used as a backend to return JSON. The React frontend calls to Django or Flask backend and receives JSON. For example, the JSON could be a list of restaurants or reviews.
-### Step 1: Create project structure
+### What does this do?
+
+The idea is that this app should function with restaurant reviews, like [Deploy a Python (Django or Flask) web app with PostgreSQL in Azure](https://docs.microsoft.com/azure/app-service/tutorial-python-postgresql-app), but instead of rendering templates in Django or Flask, use [React](https://reactjs.org/) as frontend. This means built in templating engines are not used and Python is used as a backend to return JSON. The React frontend calls to Django or Flask backend and receives JSON. For example, the JSON could be a list of restaurants or reviews.
+### From scratch step 1: Create project structure
+
+This is how to construct this project from scratch. If you are cloning this, everything is here that you need and you don't need to follow these steps.
 
 Create frontend (React)
 
@@ -24,20 +28,20 @@ Create [app.py](./api/app.py) and [.flaskenv](./api/.flaskenv) files in the `api
 
 Run flask to make sure everything is working in the `api` folder with `flask run`.
 
-### Step 2: Connect up React to flask
+### From scratch step 2: Connect up React to flask
 
 In the root project directory, `package.json` is the configuration for the frontend. Edit package.json to add to bottom line to proxy calls to Flask.
 
 ```json
-"proxy": "http://localhost:5000"`
+"proxy": "http://localhost:5000"
 ```
-and to help out under scripts
+and to help out, under scripts add:
 
 ```json
-"start-api": "cd api && .venv/Scripts/flask run --no-debugger",
+"start-api": "cd api && .venv/Scripts/flask run --no-debugger"
 ```
 
-### Step 3: Edit .gitignore and prepare repo
+### From scratch step 3: Edit .gitignore and prepare repo
 
 The `npx` command created and React project as a repo. Add ignore for flask stuff by edit .gitignore and add
 
@@ -53,7 +57,7 @@ $ git add .gitignore package.json api
 $ git commit -m "flask backend"
 ```
 
-### Step 4: Code frontend and test
+### From scratch step 4: Code frontend and test
 
 Edit [App.js](./src/App.js) to add code to call Flask api. Then,
 
