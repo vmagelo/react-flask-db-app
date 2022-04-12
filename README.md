@@ -73,6 +73,32 @@ $ yarn start-api
 
 This uses custom script command in `package.json` that was created and opens up Flask backend. Go to `https://localhost:3000/<api-name>`.
 
+## Conversion tips
+
+We'll make uses of [dataclasses](https://docs.python.org/3/library/dataclasses.html) decorator on `restaurant` and `review` tables. This allows use to go from object (list) to JSON. It requires fields that annotate the types. For example: `name: str`. We did not need these before in just Python (Django or Flask) + database (PostgreSQL) version.
+
+In Python + DB version, we had a route like this and definition like this:
+
+```python
+@app.route('/', methods=['GET'])
+def index():
+    from models import Restaurant
+    restaurants = Restaurant.query.all()    
+    return render_template('index.html', restaurants=restaurants)
+```
+
+These definitions don't use built-in renders and instead return JSON:
+
+```python
+@app.route('/api/restaurants', methods=['GET'])
+def get_restaurants():
+    from models import Restaurant
+    restaurants = Restaurant.query.all()  
+    return jsonify(restaurants)
+```
+
+We use the structure of `api` (Flask or Django) folder inside root React folder. This is just for convenience and can be broken apart.
+
 
 
 ## Original Getting Started with Create React App
