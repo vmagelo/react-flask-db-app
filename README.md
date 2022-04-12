@@ -1,6 +1,6 @@
-## Flask, React, Postgres
+## Flask, React, Postgres - Test App
 
-This is how to construct this project from scratch. If you are cloning everything is here that you need.
+This is how to construct this project from scratch. If you are cloning this, everything is here that you need. The idea is that this app should function with restaurant reviews, like [Deploy a Python (Django or Flask) web app with PostgreSQL in Azure](https://docs.microsoft.com/azure/app-service/tutorial-python-postgresql-app), but instead of rendering templates in Django or Flask, use [React](https://reactjs.org/) as frontend. This means built in templating engines are not used and Python is used as a backend to return JSON. The React frontend calls to Django or Flask backend and receives JSON. For example, the JSON could be a list of restaurants or reviews.
 ### Step 1: Create project structure
 
 Create frontend (React)
