@@ -1,0 +1,7 @@
+Flask
+python-dotenv
+Flask-Migrate
+Flask-SQLAlchemy
+flask_wtf
+psycopg2
+SQLAlchemy
