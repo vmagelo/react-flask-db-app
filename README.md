@@ -1,4 +1,4 @@
-## Flask, React, Postgres - Test App
+## React, Flask, Postgres - Sample App
 
 ### What does this do?
 
