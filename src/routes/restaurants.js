@@ -15,7 +15,7 @@ export default function Restaurants() {
     fetch('api/restaurants').then(res => res.json()).then(data => {
       setRestaurants(data.restaurants);
     })
-  }, []);
+  }, [restaurants]);
 
     return (
       <main className="ps-4" style={{ padding: "1rem 0" }}>

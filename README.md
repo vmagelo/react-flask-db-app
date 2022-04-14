@@ -2,7 +2,10 @@
 
 ### What does this do?
 
-The idea is that this app should function with restaurant reviews, like [Deploy a Python (Django or Flask) web app with PostgreSQL in Azure](https://docs.microsoft.com/azure/app-service/tutorial-python-postgresql-app), but instead of rendering templates in Django or Flask, use [React](https://reactjs.org/) as frontend. This means built in templating engines are not used and Python is used as a backend to return JSON. The React frontend calls to Django or Flask backend and receives JSON. For example, the JSON could be a list of restaurants or reviews.
+The idea is that this app should function with restaurant reviews as is shown in [Deploy a Python (Django or Flask) web app with PostgreSQL in Azure](https://docs.microsoft.com/azure/app-service/tutorial-python-postgresql-app), but instead of rendering templates in Django or Flask, use [React](https://reactjs.org/) as frontend. This means built-in templating engines are not used in Python (Django or Flask), instead Python is used only as backend to return JSON. The React frontend receives JSON when it calls to the backend. For example, the JSON could be a list of restaurants or reviews. Python backend gets data from database.
+
+For example, to test locally, start Flask, which will run on localhost:5000 and start React, which will run on localhost:3000. The React package.json configureation proxies request to Flask.
+
 ### From scratch step 1: Create project structure
 
 This is how to construct this project from scratch. If you are cloning this, everything is here that you need and you don't need to follow these steps.
@@ -14,7 +17,7 @@ $ npx create-react-app react-flask-db-app
 $ cd react-flask-db-app
 ```
 
-Create backend (Flask)
+Create backend (Flask). In this sample app, the backend will be in a folder in the main React project for convenience.
 
 ```dos
 $ mdir api  (backend)
@@ -64,6 +67,7 @@ Add modules that we'll need:
 ```dos
 npm install --save react-bootstrap
 npm install --save react-helmet
+npm install --save bootstrap
 ```
 
 Edit [App.js](./src/App.js) to add code to call Flask api. Then,
@@ -76,6 +80,9 @@ This opens localhost:3000 as frontend. Next,
 
 ```dos
 $ yarn start-api
+--or--
+$ cd api
+$ flask run
 ```
 
 This uses custom script command in `package.json` that was created and opens up Flask backend. Go to `https://localhost:3000/<api-name>`.
@@ -101,12 +108,10 @@ These definitions don't use built-in renders and instead return JSON:
 def get_restaurants():
     from models import Restaurant
     restaurants = Restaurant.query.all()  
-    return jsonify(restaurants)
+    return {"restaurants": restaurants}
 ```
 
 We use the structure of `api` (Flask or Django) folder inside root React folder. This is just for convenience and can be broken apart.
-
-
 
 ## Original Getting Started with Create React App
 
