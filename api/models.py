@@ -11,6 +11,7 @@ Base = declarative_base()
 class Restaurant(db.Model):
     __tablename__ = 'restaurant'
     id: str
+    name: str
     street_address: str
     description: str
     

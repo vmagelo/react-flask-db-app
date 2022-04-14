@@ -1,6 +1,5 @@
 import React, { useState, useEffect} from 'react';
 
-
 export default function Restaurants() {
 
   const [currentTime, setCurrentTime] = useState(0);
@@ -14,7 +13,7 @@ export default function Restaurants() {
 
   useEffect(() => {
     fetch('api/restaurants').then(res => res.json()).then(data => {
-      setRestaurants(data.time);
+      setRestaurants(data.restaurants);
     })
   }, []);
 
@@ -22,7 +21,15 @@ export default function Restaurants() {
       <main className="ps-4" style={{ padding: "1rem 0" }}>
         <h2>Restaurants</h2>
         <div>Time from Flask backend is {currentTime}.</div>
-        <div>Restaurant list from Flask backend is {restaurants}.</div>
+        <div>Restaurant list from Flask backend:
+          <ul>
+            {
+               restaurants.map((rest) =>
+                    <li key={rest.id}>{rest.name}, {rest.description} </li>
+               )            
+            }
+          </ul>
+        </div>
       </main>
     );
   }

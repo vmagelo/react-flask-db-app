@@ -40,16 +40,16 @@ db.session.commit()
 def get_current_time():
     return {'time': time.time()}
 
-@app.route('/api/restaurants', methods=['GET'])
+@app.route('/api/restaurants')
 def get_restaurants():
     from models import Restaurant
     print('Request for restaurants received')
     restaurants = Restaurant.query.all()  
-    return jsonify(restaurants)
+    return {'restaurants' : restaurants}
 
 @app.route('/api/reviews', methods=['GET'])
 def get_reviews():
     from models import Review
     print('Request for reviews received')
     reviews = Review.query.all()  
-    return jsonify(reviews)
+    return {'reviews': reviews}
