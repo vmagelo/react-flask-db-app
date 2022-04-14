@@ -59,6 +59,13 @@ $ git commit -m "flask backend"
 
 ### From scratch step 4: Code frontend and test
 
+Add modules that we'll need:
+
+```dos
+npm install --save react-bootstrap
+npm install --save react-helmet
+```
+
 Edit [App.js](./src/App.js) to add code to call Flask api. Then,
 
 ```dos
