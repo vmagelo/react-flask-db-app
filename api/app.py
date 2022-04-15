@@ -1,7 +1,6 @@
 import os
-import json
 import time
-from flask import Flask, jsonify
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect
@@ -49,7 +48,7 @@ def get_restaurants():
 
 @app.route('/api/reviews', methods=['GET'])
 def get_reviews():
-    from models import Review
+    from models import Review    
     print('Request for reviews received')
-    reviews = Review.query.all()  
+    reviews = Review.query.all()
     return {'reviews': reviews}
