@@ -2,7 +2,7 @@
 
 ### What does this do?
 
-The idea is that this app should function with restaurant reviews as is used in [Deploy a Python (Django or Flask) web app with PostgreSQL in Azure](https://docs.microsoft.com/azure/app-service/tutorial-python-postgresql-app), but instead of rendering templates in Django or Flask, use [React](https://reactjs.org/) as the frontend. This means built-in templating engines are not used in Python (Django or Flask), instead Python is used only as backend to return JSON. The React frontend receives JSON by calling the backend. For example, the JSON could be a list of restaurants or reviews. Python backend gets data from database.
+The idea is that this app should function with restaurant reviews as is used in [Deploy a Python (Django or Flask) web app with PostgreSQL in Azure](https://docs.microsoft.com/azure/app-service/tutorial-python-postgresql-app), but instead of rendering templates in Django or Flask, use [React](https://reactjs.org/) as the frontend. This means built-in templating engines are not used in Python (Django or Flask), instead Python is used only as backend to return JSON. The React frontend receives JSON by calling the backend. For example, the JSON could be a list of restaurants or reviews. Python backend gets data from the database.
 
 The React frontend should look and act like an single-page application.
 
@@ -96,9 +96,9 @@ This uses custom script command in `package.json` that was created and opens up 
 
 ## Conversion tips
 
-We'll make uses of [dataclasses](https://docs.python.org/3/library/dataclasses.html) decorator on `restaurant` and `review` tables. This allows use to go from object (list) to JSON. It requires fields that annotate the types. For example: `name: str`. We did not need these before in just Python (Django or Flask) + database (PostgreSQL) version.
+We'll make use of [dataclasses](https://docs.python.org/3/library/dataclasses.html) decorator on `restaurant` and `review` tables. This allows use to go from object (list) to JSON. It requires fields that annotate the types. For example: `name: str`. We did not need these before in just Python (Django or Flask) + database (PostgreSQL) version.
 
-In Python + DB version, we had a route like this and definition like this:
+In Python + DB version, we had a route and function like this:
 
 ```python
 @app.route('/', methods=['GET'])
@@ -108,7 +108,7 @@ def index():
     return render_template('index.html', restaurants=restaurants)
 ```
 
-These definitions don't use built-in renders and instead return JSON:
+This code  don't use built-in renders and instead return JSON:
 
 ```python
 @app.route('/api/restaurants', methods=['GET'])
