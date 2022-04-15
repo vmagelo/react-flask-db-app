@@ -2,9 +2,16 @@
 
 ### What does this do?
 
-The idea is that this app should function with restaurant reviews as is shown in [Deploy a Python (Django or Flask) web app with PostgreSQL in Azure](https://docs.microsoft.com/azure/app-service/tutorial-python-postgresql-app), but instead of rendering templates in Django or Flask, use [React](https://reactjs.org/) as frontend. This means built-in templating engines are not used in Python (Django or Flask), instead Python is used only as backend to return JSON. The React frontend receives JSON when it calls to the backend. For example, the JSON could be a list of restaurants or reviews. Python backend gets data from database.
+The idea is that this app should function with restaurant reviews as is used in [Deploy a Python (Django or Flask) web app with PostgreSQL in Azure](https://docs.microsoft.com/azure/app-service/tutorial-python-postgresql-app), but instead of rendering templates in Django or Flask, use [React](https://reactjs.org/) as the frontend. This means built-in templating engines are not used in Python (Django or Flask), instead Python is used only as backend to return JSON. The React frontend receives JSON by calling the backend. For example, the JSON could be a list of restaurants or reviews. Python backend gets data from database.
 
-For example, to test locally, start Flask, which will run on localhost:5000 and start React, which will run on localhost:3000. The React package.json configureation proxies request to Flask.
+The React frontend should look and act like an single-page application.
+
+To test locally, start Flask, which will run on localhost:5000 and start React, which will run on localhost:3000. The React package.json configuration proxies request to Flask. Make sure to start Flask in the `\api` folder and in the virtual environment.
+
+Example screenshots:
+
+![Flask backend returning restaurant list](/public/screenshot%201.png)
+![React frontend showing restaurant list](/public/screenshot%202.png)
 
 ### From scratch step 1: Create project structure
 
