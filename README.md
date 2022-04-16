@@ -2,13 +2,13 @@
 
 ### What does this do?
 
-The idea is that this app should function with restaurant reviews as is used in [Deploy a Python (Django or Flask) web app with PostgreSQL in Azure](https://docs.microsoft.com/azure/app-service/tutorial-python-postgresql-app), but instead of rendering templates in Django or Flask, use [React](https://reactjs.org/) as the frontend. This means built-in templating engines are not used in Python (Django or Flask), instead Python is used only as backend to return JSON. The React frontend receives JSON by calling the backend. For example, the JSON could be a list of restaurants or reviews. Python backend gets data from the database.
+The idea is that this app should function with restaurant reviews as is used in [Deploy a Python (Django or Flask) web app with PostgreSQL in Azure](https://docs.microsoft.com/azure/app-service/tutorial-python-postgresql-app), but instead of rendering templates in Django or Flask, use [React](https://reactjs.org/) as the frontend. This means built-in template engines are not used in Python (Django or Flask), instead Python is used only as backend to return JSON. The React frontend receives JSON by calling the backend. For example, the JSON could be a list of restaurants or reviews. Python backend gets data from the database.
 
 The React frontend should look and act like an single-page application.
 
 To test locally, start Flask, which will run on localhost:5000 and start React, which will run on localhost:3000. The React package.json configuration proxies request to Flask. Make sure to start Flask in the `\api` folder and in the virtual environment.
 
-Example screenshots:
+Example of unstyled, preliminary screenshots:
 
 ![Flask backend returning restaurant list](/public/screenshot%201.png)
 ![React frontend showing restaurant list](/public/screenshot%202.png)
@@ -40,7 +40,7 @@ Run flask to make sure everything is working in the `api` folder with `flask run
 
 ### From scratch step 2: Connect up React to flask
 
-In the root project directory, `package.json` is the configuration for the frontend. Edit package.json to add to bottom line to proxy calls to Flask.
+In the root project directory, [package.json](./package.json) is the configuration for the frontend. Edit package.json to add to bottom line to proxy calls to Flask.
 
 ```json
 "proxy": "http://localhost:5000"
@@ -59,7 +59,7 @@ The `npx` command created and React project as a repo. Add ignore for flask stuf
 .venv
 __pycache__
 ```
-Do check in:
+Check in what you have so far:
 
 ```dos
 $ git status
@@ -92,7 +92,7 @@ $ cd api
 $ flask run
 ```
 
-This uses custom script command in `package.json` that was created and opens up Flask backend. Go to `https://localhost:3000/<api-name>`.
+This uses custom script command in [package.json](./package.json) that was created and opens up Flask backend. Go to `https://localhost:3000/<api-name>`.
 
 ## Conversion tips
 
